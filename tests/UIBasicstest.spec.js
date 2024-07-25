@@ -13,7 +13,6 @@ test("Browser Playwright test", async ({ browser }) => {
   // goes to webiste
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   console.log(await page.title());
-  //css
   //types username
   await userName.fill("rahulshetty");
   // type password
@@ -38,27 +37,18 @@ test("Browser Playwright test", async ({ browser }) => {
   console.log(allTitles);
 });
 
-
-// test("Page Playwright test", async ({ page }) => {
-//   await page.goto("https://google.com");
-//   // get title - assertion
-//   console.log(await page.title());
-//   await expect(page).toHaveTitle("Google");
-// });
-
-
-test('UI Controls', async ({ page }) => {
+test('UI Web Application Controls', async ({ page }) => {
 
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   const userName = page.locator("#username");
   const signIn = page.locator("#signInBtn");
   const dropdown = page.locator('select.form-control')
   const documentLink = page.locator("[href*='documents-request']");
-  await dropdown.selectOption('consult') //this method sends the value of the options.
   const text = await newPage.locator('.red').textContent();
   const arrayText = text.split('@')
   const domain = arrayText[1].split(' ')[0]
 
+  await dropdown.selectOption('consult') //this method sends the value of the options.
   await page.locator('.radiotextsty').last().click();
   await page.locator('#okayBtn').click();
   console.log(await page.locator('.radiotextsty').last().isChecked());
@@ -68,7 +58,6 @@ test('UI Controls', async ({ page }) => {
   await page.locator('#terms').uncheck();
   await expect(page.locator('#terms')).not.toBeChecked()
   await expect(documentLink).toHaveAttribute("class", "blinkingText")
-  //assertion
   //await page.pause();
 })
 
